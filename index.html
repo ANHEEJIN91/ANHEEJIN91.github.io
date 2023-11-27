@@ -3,27 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
   <!-- fontawesome -->
+  <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <title>Document</title>
+  <style>
+    :root{
+      --main-color:#149ddd;
+      --sub-color01:#dff3fc;
+      --sub-color02:#173b6c;
+      --sub-color03:#272829;
+      --sub-color04:#a8a9b4;
+      --sub-color05:#ffffff;
+    }
+    #wrap{
+      overflow:hidden;
+    }
+    .sec{
+      height:500px;
+      border:1px solid #000;
+      transition:0.3s;
+    }
+    .header{
+      position:absolute;
+      left:0;
+      top:0;
+      right:0;
+      bottom:0;
+      z-index:10000;
+      background:rgba(0,0,0,0.3);
+      color:var(--sub-color05);      
+      transform:translateX(-100%);
+      transition:0.3s;
+    }
+    .header.active{
+      transform:translateX(0);
+    }
+    .header .container{
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:75%;
+      padding:20px;
+      background:var(--sub-color03);
+    }
+    .header .container::before{
+      content:'';
+      display:block;
+      width:100px;
+      height:100px;
+      margin:0 auto 20px;
+      border:5px solid var(--sub-color04);
+      border-radius:50%;
+      background-image:url(./images/profile02-img.jpg);
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:cover;
+    }
+    h1{
+      margin-bottom:20px;
+      font-weight:700;
+      font-size:24px;
+      text-align:center;
+    }
+    .header .row{
+      display:grid;
+      grid-template-columns:repeat(3,auto);
+      justify-content:center;
+      gap:20px;
+      margin-bottom:60px;
+    }
+    .header .row li{
+      font-size:16px;
+    }
+    .header .row li span{
+      display:none;
+    }
+    .header nav{
+      padding:0 20px;
+      font-size:20px;
+    }
+    .header nav li{
+      margin-bottom:20px;
+      color:var(--sub-color04);
+      text-transform:capitalize;
+    }
+    .header nav li i{
+      margin-right:10px;
+    }
+    .header nav li.active i,
+    .header nav li:hover i{
+      color:var(--main-color);
+    }
+    .header nav li.active span,
+    .header nav li:hover span{
+      color:var(--sub-color05);
+    }
+
+    .footer{
+      position:static;
+      left:0;
+      bottom:40px;
+      z-index:10000;
+      padding:20px 0;
+      background:var(--sub-color03);
+      color:var(--sub-color05);
+      text-align:center;
+    }
+
+    @media (min-width:1200px){
+      .sec{
+        margin-left:300px;
+      }
+      .header{
+        transform:translateX(0);
+        right:auto;
+        width:300px;
+      }
+      .header .container{
+        width:100%;
+      }
+
+
+      .footer{
+        position:absolute;
+        width:300px;
+      }
+
+    }
+
+
+  </style>
 </head>
 <body>
   <section id="wrap">
     <header class="header">
       <div class="container">
-        <h1><a href="./index.html">An Heejin</a></h1>
+        <h1 title="시작페이지로 이동"><a href="./index.html">An Heejin</a></h1>
         <ul class="row">
-          <li><a href="#"><i class="fa-brands fa-x-twitter"></i><span>twitter</span></a></li>
-          <li><a href="#"><i class="fa-brands fa-instagram"></i><span>instar</span></a></li>
-          <li><a href="#"><i class="fa-brands fa-google"></i><span>google</span></a></li>
+          <li title="X(구 트위터)"><a href="#"><i class="fa-brands fa-x-twitter"></i><span>twitter</span></a></li>
+          <li title="인스타그램"><a href="#"><i class="fa-brands fa-instagram"></i><span>instar</span></a></li>
+          <li title="구글"><a href="#"><i class="fa-brands fa-google"></i><span>google</span></a></li>
         </ul>
         <nav>
           <ul>
-            <li><a href="#home">home</a></li>
-            <li><a href="#about">about</a></li>
-            <li><a href="#skills">skills</a></li>
-            <li><a href="#portfolio">portfolio</a></li>
-            <li><a href="#contact">contact</a></li>
+            <li class="active"><a href="#home"><i class="fa-solid fa-house"></i><span>home</span></a></li>
+            <li><a href="#about"><i class="fa-solid fa-address-card"></i><span>about</span></a></li>
+            <li><a href="#skills"><i class="fa-solid fa-kitchen-set"></i><span>skills</span></a></li>
+            <li><a href="#portfolio"><i class="fa-solid fa-palette"></i><span>portfolio</span></a></li>
+            <li><a href="#contact"><i class="fa-solid fa-address-book"></i><span>contact</span></a></li>
           </ul>
         </nav>
       </div>
