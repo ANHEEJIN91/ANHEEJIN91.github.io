@@ -8,6 +8,8 @@
   <!-- fontawesome -->
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- aos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Document</title>
   <style>
     :root{
@@ -17,17 +19,43 @@
       --sub-color03:#272829;
       --sub-color04:#a8a9b4;
       --sub-color05:#ffffff;
+      scroll-behavior:smooth;
     }
     #wrap{
       overflow:hidden;
     }
     .sec{
-      height:500px;
-      border:1px solid #000;
-      transition:0.3s;
+      padding:50px 0;
+    }
+    .sec:nth-of-type(2n+1){
+      background-color:var(--sub-color01);
+    }
+    .sec .container{
+      padding:0 20px;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:30px;
+    }
+    .sec-tit{
+      font-weight:700;
+      font-size:32px;
+      color:var(--sub-color02);
+      margin-bottom:15px;
+      text-transform:capitalize;
+      position:relative;
+    }
+    .sec-tit::after{
+      content:'';
+      display:block;
+      width:50px;
+      height:3px;
+      background:var(--main-color);
+      position:absolute;
+      left:0;
+      bottom:-15px;
     }
     .header{
-      position:absolute;
+      position:fixed;
       left:0;
       top:0;
       right:0;
@@ -46,7 +74,7 @@
       left:0;
       top:0;
       bottom:0;
-      width:75%;
+      width:300px;
       padding:20px;
       background:var(--sub-color03);
     }
@@ -102,7 +130,198 @@
     .header nav li:hover span{
       color:var(--sub-color05);
     }
+    .aside{
+      position:fixed;
+      top:40px;
+      right:20px;
+      z-index:10000;
+    }
+    .aside button{
+      width:50px;
+      height:50px;
+      border:none;
+      border-radius:50%;
+      background:var(--main-color);
+      font-size:20px;
+      color:var(--sub-color05);
+      cursor:pointer;
+    }
+    .aside button i:first-child{
+      display:inline-block;
+    }
+    .aside button i:last-child{
+      display:none;
+    }
+    .aside button.active i:first-child{
+      display:none;
+    }
+    .aside button.active i:last-child{
+      display:inline-block;
+    }
+    #home{
+      height:100vh;
+      background-image:url(./images/profile02-img.jpg);
+      background-repeat:no-repeat;
+      background-position:55% center;
+      background-size:cover;
+    }
+    #home .container{
+      height:100%;
+      grid-template-columns:1fr;
+      align-content:center;
+      gap:20px;
+      text-align:center;
+      opacity:0;
+      transition:opacity 1s 0.3s;
+    }
+    #home .container.active{
+      opacity:1;
+    }
+    #home .sec-tit,#home p{
+      margin-bottom:0;
+      color:var(--sub-color05);
+    }
+    #home .sec-tit::after{
+      display:none;
+    }  
+    #home p::after{
+      content:'';
+      display:inline-block;
+      width:2px;
+      height:100%;
+      background:rgba(255,0,0,1);
+      animation: cursor 0.5s linear infinite;
+    }
+    #home #im{
+      border-bottom:3px solid var(--main-color);
+      padding-bottom:6px;
+    }
+    #about .sec-tit,
+    #about .sec-tit+p,
+    #about .img-box,
+    #about .art{
+      grid-column:1/-1;
+    }
+    #about .art h3{
+      margin-bottom:20px;
+      font-weight:700;
+      font-size:1.4em;
+      color:var(--sub-color02);
+    }
+    #about .art h3+p{
+      margin-bottom:20px;
+      font-style:italic;
+    }
+    #about .art ul{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:6px;
+      margin-bottom:20px;
+    }
+    #about .art ul li{
+      grid-column:1/-1;
+    }
+    #about .art ul li span{
+      font-weight:700;
+    }
 
+    @keyframes cursor {
+      0%{
+        background:rgba(255,0,0,1);
+      }
+      100%{
+        background:rgba(255,0,0,0);
+      }
+    }
+
+    #skills .sec-tit,
+    #skills .sec-tit+p,
+    #skills .art{
+      grid-column:1/-1;
+    }
+    #skills .art{
+      padding-top:24px;
+    }
+    #skills .art h3{
+      display:none;
+    }
+    #skills .art ul{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      row-gap:40px;
+    }
+    #skills .art ul li{
+      grid-column:1/-1;
+      height:16px;
+      background:var(--main-color);
+      position:relative;
+    }
+    #skills h4{
+      position:absolute;
+      left:0;
+      top:-24px;
+    }
+    #skills h4+p{
+      position:absolute;
+      right:0;
+      top:-24px;
+    }
+    #skills li .over-box{
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      right:0;
+      width:0;
+      background:var(--sub-color02);
+      transition:0.3s 0.3s;
+    }
+    #skills li:nth-child(2) .over-box{
+      transition-delay:0.6s;
+    }
+    #skills li:nth-child(3) .over-box{
+      transition-delay:0.9s;
+    }
+    #skills li:nth-child(4) .over-box{
+      transition-delay:1.2s;
+    }
+    #skills li:nth-child(5) .over-box{
+      transition-delay:1.5s;
+    }
+    #skills li:nth-child(6) .over-box{
+      transition-delay:1.8s;
+    }
+    #portfolio .sec-tit,#portfolio .sec-tit+p,#portfolio .art{
+      grid-column:1/-1;
+    }
+    #portfolio h3{
+      margin:0 auto 20px;
+      text-align:center;
+      text-transform:uppercase;
+    }
+    #portfolio h3 span{
+      padding:10px;
+      background:var(--sub-color01);
+      cursor:pointer;
+    }
+    #portfolio h3 span:first-child{
+      border-top-left-radius:20px;
+      border-bottom-left-radius:20px;
+      padding-left:20px;
+    }
+    #portfolio h3 span:last-child{
+      border-top-right-radius:20px;
+      border-bottom-right-radius:20px;
+      padding-right:20px;
+    }
+    #portfolio h3 span.active,
+    #portfolio h3 span:hover{
+      color:var(--main-color);
+    }
+    #portfolio ul{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+    }
     .footer{
       position:static;
       left:0;
@@ -114,6 +333,31 @@
       text-align:center;
     }
 
+
+
+
+    @media (min-width:768px){
+      #home .sec-tit{
+        font-size:42px;
+      }
+      #home p{
+        font-size:24px;
+      }
+      #about .img-box{
+        grid-column:1/5;
+      }
+      #about .art{
+        grid-column:5/-1;
+      }
+    }
+
+
+
+
+
+
+
+
     @media (min-width:1200px){
       .sec{
         margin-left:300px;
@@ -123,13 +367,38 @@
         right:auto;
         width:300px;
       }
-      .header .container{
-        width:100%;
+      .aside{
+        display:none;
+      }
+     
+      #about .art ul li{
+        grid-column:auto;
+      }
+      #skills .art ul{
+        column-gap:40px;
+      }
+      #skills .art ul li:nth-child(1){
+        grid-area:1/1/2/7;
+      }
+      #skills .art ul li:nth-child(2){
+        grid-area:2/1/3/7;
+      }
+      #skills .art ul li:nth-child(3){
+        grid-area:3/1/4/7;
+      }
+      #skills .art ul li:nth-child(4){
+        grid-area:1/7/2/-1;
+      }
+      #skills .art ul li:nth-child(5){
+        grid-area:2/7/3/-1;
+      }
+      #skills .art ul li:nth-child(6){
+        grid-area:3/7/4/-1;
       }
 
 
       .footer{
-        position:absolute;
+        position:fixed;
         width:300px;
       }
 
@@ -140,7 +409,7 @@
 </head>
 <body>
   <section id="wrap">
-    <header class="header">
+    <header class="header" id="header">
       <div class="container">
         <h1 title="시작페이지로 이동"><a href="./index.html">An Heejin</a></h1>
         <ul class="row">
@@ -159,11 +428,148 @@
         </nav>
       </div>
     </header>
-    <section class="sec sec01" id="home">home</section>
-    <section class="sec sec02" id="about">about</section>
-    <section class="sec sec03" id="skills">skills</section>
-    <section class="sec sec04" id="portfolio">portfolio</section>
-    <section class="sec sec04" id="contact">contact</section>
+    <aside class="aside">
+      <button class="btn-nav" id="btn-nav">
+        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </aside>
+    <section class="sec sec01" id="home">
+      <div class="container">
+        <h2 class="sec-tit">An Heejin</h2>
+        <p>i'm <span id="im">Designer     ,Publisher     ,a novice developer     </span><span class="cursor"></span></p>
+      </div>
+    </section>
+    <section class="sec sec02" id="about">
+      <div class="container">
+        <h2 class="sec-tit">about</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio impedit rem architecto fugiat. Doloremque minima, unde iure sapiente, harum soluta ea amet, possimus accusantium repudiandae quae consequuntur expedita at sint.
+          Earum ducimus voluptatem ad similique libero totam cumque harum sit veritatis iure. Aspernatur culpa facere cupiditate corporis, voluptates illo excepturi deleniti, inventore laborum fugiat natus ullam asperiores provident. Maxime, ipsam!
+          Deserunt quaerat vero explicabo neque debitis ab, nam est aperiam eius pariatur ipsam, sapiente porro. Fuga, nihil! Laborum nesciunt illo quos repellendus repudiandae vel, aliquam excepturi. Ad quia ipsa laboriosam.
+        </p>
+          <div data-aos="fade-right" id="fade-right" class="img-box"><img src="./images/profile02-img.jpg" alt="나의 사진"></div>
+          <article data-aos="fade-left" id="fade-left" class="art">
+            <h3>UI/UX Designer & Web Developer.</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <ul>
+              <li><span>Birthday : </span>1991-07-04</li>
+              <li><span>Age : </span>33</li>
+              <li><span>Website : </span>https://anheejin91.github.io/</li>
+              <li><span>Degree : </span>Master</li>
+              <li><span>Phone : </span>+123 456 7890</li>
+              <li><span>PhEmailone : </span>gsy5195@naver.com</li>
+              <li><span>City : </span>South Korea, pohang</li>
+              <li><span>Freelance : </span>Available</li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quis veritatis autem praesentium dicta dignissimos sequi obcaecati ullam voluptate velit culpa magni doloribus cum alias illum, blanditiis eligendi dolorem commodi!</p>
+          </article>
+      </div>
+    </section>
+    <section class="sec sec03" id="skills">
+      <div class="container">
+        <h2 class="sec-tit">skills</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur doloribus officia voluptatum voluptates odio, iure nihil aut. Fuga ratione aut ab odio esse ea corporis amet, velit cupiditate quod commodi.
+          Ipsa beatae accusamus laborum earum neque saepe animi qui dicta eius nemo, inventore exercitationem illo, deleniti ullam a quam perspiciatis at eaque placeat. Nesciunt officia aliquam rerum culpa animi minima.
+          Minima facere quo dolores, saepe, omnis maiores excepturi ut necessitatibus quam quod doloremque exercitationem, qui deserunt! Nam sapiente dolores, iste aperiam id expedita optio temporibus sequi ad, doloremque cumque eum!
+        </p>
+        <article class="art">
+          <h3>스킬 성취율</h3>
+          <ul>
+            <li>
+              <h4>HTML5</h4>
+              <p>100%</p>
+            </li>
+            <li>
+              <h4>CSS3</h4>
+              <p>85%</p>
+            </li>
+            <li>
+              <h4>JAVASCRIPT</h4>
+              <p>70%</p>
+            </li>
+            <li>
+              <h4>JQERY</h4>
+              <p>75%</p>
+            </li>
+            <li>
+              <h4>PHOTOSHOP</h4>
+              <p>90%</p>
+            </li>
+            <li>
+              <h4>ILLUSTRATOR</h4>
+              <p>75%</p>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <section class="sec sec04" id="portfolio">
+      <div class="container">
+        <h2 class="sec-tit">portfolio</h2>      
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veritatis reprehenderit fugit odit praesentium nulla, porro deserunt adipisci neque suscipit saepe aperiam quasi, facilis unde necessitatibus nisi. Mollitia, iste quibusdam?
+          Tenetur ab doloribus at, aspernatur voluptatum maxime minus aut sapiente quis corporis consequuntur eius reprehenderit perferendis similique ratione quam fuga obcaecati deserunt totam, ducimus quaerat officiis. Eaque ratione unde itaque!
+          Tenetur fugiat, corporis sunt perferendis minus ipsa possimus! Excepturi voluptatibus dolores hic quidem quibusdam deserunt tempore velit distinctio nemo, magnam quaerat quis error obcaecati. Quibusdam, ab inventore? Omnis, quam ratione.
+        </p>
+        <article class="art">
+          <h3><span class="active">All</span><span>web Design</span><span>web Pub</span><span>Banner</span></h3>
+          <ul>
+            <li class="port-item port-item01 port-design port-design01">
+              <h4>웹디자인1</h4>
+              <div class="img-box"><img src="./images/portfolio/portfolio-1.jpg" alt="디자인1"></div>
+              <p><a href="#">깃허브로 이동</a></p>
+            </li>
+            <li class="port-item port-item02 port-design port-design02">
+              <h4>웹디자인2</h4>
+              <div class="img-box"><img src="./images/portfolio/portfolio-2.jpg" alt="디자인2"></div>
+              <p><a href="#">깃허브로 이동</a></p>
+            </li>
+            <li class="port-item port-item03 port-design port-design03">
+              <h4>웹디자인3</h4>
+              <div class="img-box"><img src="./images/portfolio/portfolio-3.jpg" alt="디자인3"></div>
+              <p><a href="#">깃허브로 이동</a></p>
+            </li>            
+            <li class="port-item port-item04 port-pub port-pub01">
+              <h4>웹퍼블리싱1</h4>
+              <div class="img-box"><img src="./images/portfolio/portfolio-4.jpg" alt="퍼블리싱1"></div>
+              <p><a href="#">깃허브로 이동</a></p>
+            </li>
+            <li class="port-item port-item05 port-pub port-pub02">
+              <h4>웹퍼블리싱2</h4>
+              <div class="img-box"><img src="./images/portfolio/portfolio-5.jpg" alt="퍼블리싱2"></div>
+              <p><a href="#">깃허브로 이동</a></p>
+            </li>
+              <li class="port-item port-item06 port-pub port-pub03">
+                <h4>웹퍼블리싱3</h4>
+                <div class="img-box"><img src="./images/portfolio/portfolio-6.jpg" alt="퍼블리싱3"></div>
+                <p><a href="#">깃허브로 이동</a></p>
+            </li>
+            <li class="port-item port-item07 port-banner port-banner01">
+              <h4>베너1</h4>
+              <div class="img-box"><img src="./images/portfolio/portfolio-7.jpg" alt="베너1"></div>
+              <p><a href="#">깃허브로 이동</a></p>
+            </li>
+            <li class="port-item port-item08 port-banner port-banner02">
+              <h4>베너2</h4>
+              <div class="img-box"><img src="./images/portfolio/portfolio-8.jpg" alt="베너2"></div>
+              <p><a href="#">깃허브로 이동</a></p>
+            </li>
+            <li class="port-item port-item09 port-banner port-banner03">
+              <h4>베너3</h4>
+              <div class="img-box"><img src="./images/portfolio/portfolio-9.jpg" alt="베너3"></div>
+              <p><a href="#">깃허브로 이동</a></p>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <section class="sec sec04" id="contact">
+      <div class="container">
+        <h2 class="sec-tit">contact</h2>      
+      </div>
+    </section>
     <footer class="footer">
       <div class="container">Copyright An Heejin</div>
     </footer>
@@ -171,8 +577,197 @@
 
   
   <script src="./js/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
+    setAc($('#home .container'));
 
-  </script>
+    $('#btn-nav').click(function(){
+      tglAc($('#header'));
+      tglAc($('#btn-nav'));
+      if($('#header').hasClass('active')){
+        nonScr($('#wrap'));
+      }else{
+        scr($('#wrap'));
+      }
+    })
+
+    $('nav li').click(function(){
+      resAc($('nav li'));
+      setAc($(this));
+      resAc($('#header'));
+      resAc($('#btn-nav'));
+      scr($('#wrap'));
+    })
+
+    $(window).scroll(function(){
+      let skillsArtY = $('#skills .art').offset().top;
+      let skillsArtHeight = $('#skills .art').height();
+      let winHeight = $(window).height();
+      let scrTop = $(window).scrollTop();
+      let result = skillsArtY - winHeight - scrTop;
+      if(result + skillsArtHeight < 0){
+        overBox(1);
+      }else{
+        overBox(0);
+      }
+      console.log(scrTop);
+    })
+
+
+    $('#portfolio h3 span').click(function(){
+      resAc($('#portfolio h3 span'));
+      setAc($(this));
+      if($(this).text()=='All'){
+        $('.port-item').stop().show(300);
+      }else if($(this).text()=='web Design'){
+        $('.port-item').stop().hide(300);
+        $('.port-design').stop().show(300);
+      }else if($(this).text()=='web Pub'){
+        $('.port-item').stop().hide(300);
+        $('.port-pub').stop().show(300);
+      }else{
+        $('.port-item').stop().hide(300);
+        $('.port-banner').stop().show(300);
+      }
+    })
+
+
+    let elIm = document.querySelector('#im');
+    let imTxt = elIm.innerText;
+    elIm.innerText='';
+    let idx = 0;
+
+    setInterval(function(){
+      if(idx<=imTxt.length-1){
+        if(imTxt[idx]==','){
+          elIm.innerText = '';
+        }else{
+          elIm.innerText = elIm.innerText + imTxt[idx];
+        }
+        idx++;
+      }else{
+        idx = 0;
+        elIm.innerText = '';        
+      }
+    },200);
+
+    AOS.init();
+
+    //over-box
+    $('#skills li').append('<div class="over-box"></div>');
+    
+    
+
+
+    // fadeRight(-100,0);
+    // fadeLeft(100,0);
+
+    // $(window).scroll(function(){
+    //   let elFadeRightY = $('#fade-right').offset().top;
+    //   let elFadeRightHeight = $('#fade-right').height();
+    //   let elFadeLeftY = $('#fade-left').offset().top;
+    //   let elFadeLeftHeight = $('#fade-left').height();
+    //   let winHeight = $(this).height();
+    //   let scrTop = $(this).scrollTop();
+    //   let resultRight = elFadeRightY - winHeight - scrTop;
+    //   let resultLeft = elFadeLeftY - winHeight - scrTop;
+    //   if(resultRight + elFadeRightHeight / 2 < 0){
+    //     fadeRight(0,1);
+    //   }else{
+    //     fadeRight(-100,0);
+    //   }
+    //   if(resultLeft + elFadeLeftHeight / 2 < 0){
+    //     fadeLeft(0,1);
+    //   }else{
+    //     fadeLeft(100,0);
+    //   }
+    // })
+
+
+    // let imTxt = $('#im').text();
+    // let insertTxt = '';
+    // $('#im').text('');
+    // let idx = 0;
+
+    // let typeing = setInterval(function(){
+    //   if(idx<=imTxt.length-1){
+    //     if(imTxt[idx]==','){
+    //       insertTxt='';
+    //       $('#im').text(insertTxt);
+    //     }else{
+    //       insertTxt = insertTxt + imTxt[idx];
+    //       $('#im').text(insertTxt);
+    //     }
+    //     idx++;          
+    //   }else{
+    //     idx=0;
+    //     insertTxt='';
+    //     $('#im').text(insertTxt);
+    //   }      
+    // },200);
+      
+
+    // set Active
+    function setAc(el){
+      el.addClass('active');
+    }
+
+    // reset Active
+    function resAc(el){
+      el.removeClass('active');
+    }
+
+    // toggle Active
+    function tglAc(el){
+      el.toggleClass('active');
+    }
+    
+    // non scroll
+    function nonScr(el){
+      el.css({
+        height:'100vh',
+        overflow:'hidden',
+      })
+    }
+ 
+    //scroll
+    function scr(el){
+      el.css({
+        height:'auto',
+        overflow:'auto',
+      })
+    }
+ 
+
+    function fadeRight(p1,p2){
+      $('#fade-right').css({
+        transform:`translateX(${p1}%)`,
+        opacity:`${p2}`,
+        transition:'0.5s',
+      })
+    }
+      
+    function fadeLeft(p1,p2){
+      $('#fade-left').css({
+        transform:`translateX(${p1}%)`,
+        opacity:`${p2}`,
+        transition:'0.5s',
+      })
+    }
+
+    function overBox(p1){
+      for(let idx=0;idx<=$('.over-box').length-1;idx++){
+        let result = $('.over-box').eq(idx).prev().text();
+        let time = 0
+        if(p1==0){
+          result=p1;
+        }
+        $('.over-box').eq(idx).css({
+          width:result,
+        })
+      }
+    }
+ </script>
 </body>
 </html>
