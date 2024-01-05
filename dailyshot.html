@@ -174,7 +174,7 @@
     .ranking h2,
     .korea h2,
     .sns h2{    
-      color:#4b80d8;  
+      /* color:#4b80d8;   */
       display: inline-block;
       color: rgb(0, 0, 0);
       font-family: 'Rubik Doodle Shadow', serif;
@@ -227,7 +227,7 @@
       font-weight:700;
       font-size:11px;
       color:#fff;
-      background:rgba(0,0,0,0.5);
+      /* background:rgba(0,0,0,0.5); */
       opacity:0;
       transition: 0.3s;
       z-index:2;
@@ -262,6 +262,9 @@
       display:grid;
       height:50%;
     }
+    .week h2 p{
+      font-size:20px;
+    }
     .week .art-text{
       grid-area:1/1/2/2;   
       z-index:2;
@@ -269,7 +272,7 @@
       font-size:10px;
       line-height:1.5;
       color:#fff;
-      background:rgba(0,0,0,0.5);
+      background:rgba(0,0,0,0.2);
       opacity:0;
       text-align:center;
       transition:0.3s;
@@ -310,14 +313,12 @@
       margin-bottom:20px;
     }
     .week .art img {
-      -webkit-filter: grayscale(0) blur(0);
-      filter: grayscale(0) blur(0);
       -webkit-transition: .5s ease-in-out;
       transition: .5s ease-in-out;
+      transform:scale(0) rotate(0);
     }
     .week .art:hover img {
-      -webkit-filter: grayscale(100%) blur(3px);
-	    filter: grayscale(100%) blur(3px);
+      transform:scale(1) rotate(720deg);
     }
     .event .container{
       position:relative;    
@@ -393,15 +394,13 @@
     }
     .ranking .art{
       display:grid;
-    }  
-    .ranking .art{
       transition: all 0.5s linear;
       border-radius: 50%;
-    }
-  
-    .ranking .art:hover {
-      transform: rotateX( 365deg )
+      animation: updown1 3s infinite;
     } 
+    .ranking .art02{
+      animation: updown2 3s infinite;
+    }
     .ranking .art-text{   
       grid-area:1/1/2/2;   
       font-weight:700;
@@ -440,22 +439,24 @@
     }
     .korea .art{
       display:grid;
-      transition: all 1s linear;
-      border-radius: 50%;
+      animation: show 5s infinite;
+      overflow: hidden;
     }
-    .korea .art:hover {
+    /* .korea .art:hover {
       transform: translateX( 50px )
-    }  
+    }   */
     .korea .art-text{   
       grid-area:1/1/2/2;   
       font-weight:700;
       font-size:10px;
       text-align:center;
       color:#fff;
-      background:rgba(0,0,0,0.5);
+      background:rgba(63, 163, 209, 0.5);
       opacity:0;
       transition: 0.3s;
       z-index:2;
+      transform:translate(100px,-100%);
+      border-radius:50%;
     }
     .korea .art a{
       display:flex;
@@ -475,6 +476,7 @@
     .korea .art:hover .art-text{
       opacity:1;
       /* z-index:3; */
+      transform: translateX(0);
     }    
     .sns h2{     
       margin-bottom:20px;
@@ -809,6 +811,28 @@
       0% {background-position: 100% -100%}
     }
 
+    @keyframes show {
+      0%{transform:translateX(0px);}
+      25%{transform:translateX(-50px);}
+      50%{transform:translateX(50px);}
+      100%{transform:translateX(0px);}
+    }
+
+    @keyframes updown1{
+      0%{ transform: translateY(0px)}
+      25%{ transform: translateY(-50px)}
+      50%{ transform: translateY(50px)}
+      100%{ transform: translateY(0)}
+    }
+    
+    @keyframes updown2{
+      0%{ transform: translateY(0px)}
+      25%{ transform: translateY(50px)}
+      50%{ transform: translateY(-50px)}
+      100%{ transform: translateY(0)}
+    }
+    
+    
 
   </style>
 </head>
@@ -964,7 +988,8 @@
     <section class="sec sec03 week">
       <div class="container">
         <h2>
-          <span data-shadow='Store Week BEST'>Store Week BEST</span>          
+          <span data-shadow='Store Week BEST'>Store Week BEST</span>
+          <p>마우스를 올리세요</p>
         </h2>
         <article class="art art01">
           <div class="art-text">
