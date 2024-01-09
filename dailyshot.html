@@ -262,6 +262,21 @@
       display:grid;
       height:50%;
     }
+    .week .art01{
+      animation: opacity 5s 1s infinite;
+    }
+    .week .art02{
+      animation: opacity 5s 2s infinite;
+    }
+    .week .art03{
+      animation: opacity 5s 3s infinite;
+    }
+    .week .art04{
+      animation: opacity 5s 4s infinite;
+    }
+    .week .art05{
+      animation: opacity 5s 5s infinite;
+    }
     .week h2 p{
       font-size:20px;
     }
@@ -273,16 +288,13 @@
       line-height:1.5;
       color:#fff;
       background:rgba(0,0,0,0.2);
-      opacity:0;
+      /* opacity:0; */
       text-align:center;
       transition:0.3s;
     }
-    .week .art-text:hover{
-      opacity:1;
-    }
     .week .art-text h3{
       font-size:6px;
-    }
+    } 
     .week .art01{
       grid-column:1/5;
     }
@@ -311,14 +323,6 @@
     }
     .week .container h2{
       margin-bottom:20px;
-    }
-    .week .art img {
-      -webkit-transition: .5s ease-in-out;
-      transition: .5s ease-in-out;
-      transform:scale(0) rotate(0);
-    }
-    .week .art:hover img {
-      transform:scale(1) rotate(720deg);
     }
     .event .container{
       position:relative;    
@@ -395,12 +399,7 @@
     .ranking .art{
       display:grid;
       transition: all 0.5s linear;
-      border-radius: 50%;
-      animation: updown1 3s infinite;
     } 
-    .ranking .art02{
-      animation: updown2 3s infinite;
-    }
     .ranking .art-text{   
       grid-area:1/1/2/2;   
       font-weight:700;
@@ -439,12 +438,8 @@
     }
     .korea .art{
       display:grid;
-      animation: show 5s infinite;
       overflow: hidden;
     }
-    /* .korea .art:hover {
-      transform: translateX( 50px )
-    }   */
     .korea .art-text{   
       grid-area:1/1/2/2;   
       font-weight:700;
@@ -811,28 +806,12 @@
       0% {background-position: 100% -100%}
     }
 
-    @keyframes show {
-      0%{transform:translateX(0px);}
-      25%{transform:translateX(-50px);}
-      50%{transform:translateX(50px);}
-      100%{transform:translateX(0px);}
-    }
-
-    @keyframes updown1{
-      0%{ transform: translateY(0px)}
-      25%{ transform: translateY(-50px)}
-      50%{ transform: translateY(50px)}
-      100%{ transform: translateY(0)}
-    }
     
-    @keyframes updown2{
-      0%{ transform: translateY(0px)}
-      25%{ transform: translateY(50px)}
-      50%{ transform: translateY(-50px)}
-      100%{ transform: translateY(0)}
+    @keyframes opacity {
+      0%{opacity:1;}
+      50%{opacity:0;}
+      100%{opacity:1;}
     }
-    
-    
 
   </style>
 </head>
@@ -989,7 +968,6 @@
       <div class="container">
         <h2>
           <span data-shadow='Store Week BEST'>Store Week BEST</span>
-          <p>마우스를 올리세요</p>
         </h2>
         <article class="art art01">
           <div class="art-text">
