@@ -178,7 +178,7 @@
       display: inline-block;
       color: rgb(0, 0, 0);
       font-family: 'Rubik Doodle Shadow', serif;
-      font-size:3em; 
+      font-size:2.9em; 
       text-shadow: .03em .03em 0 rgb(255, 255, 255);
       /* position: relative;   */
     }
@@ -555,7 +555,6 @@
       filter:grayscale(0)
 
     }
-
     .sec05 .art{overflow: hidden;}
     .sec05 .art .art-text{
       transform: translateY(100%);;
@@ -565,7 +564,6 @@
       /* opacity: 1 !important; */
       transform: translate(0);;
     }
-    
     @media (min-width:500px){
       h2 {
         font-size: 35px;
@@ -666,7 +664,6 @@
       .sns h2 {
         font-size:4em; 
       }
-     
       .week .container{
         grid-template-columns:repeat(12,1fr);
         gap:20px;
@@ -800,19 +797,15 @@
       75%{transform:translateY(-5px)}
       100%{transform:translateY(0)}
     }
-
     @keyframes shad-anim {
       0% {background-position: 0 0}
       0% {background-position: 100% -100%}
-    }
-
-    
+    }    
     @keyframes opacity {
       0%{opacity:1;}
       50%{opacity:0;}
       100%{opacity:1;}
     }
-
   </style>
 </head>
 <body>
@@ -967,7 +960,7 @@
     <section class="sec sec03 week">
       <div class="container">
         <h2>
-          <span data-shadow='Store Week BEST'>Store Week BEST</span>
+          <span data-shadow='Week BEST'>Week BEST</span>
         </h2>
         <article class="art art01">
           <div class="art-text">
@@ -1174,16 +1167,12 @@
       </div>
     </footer>
   </section>
-   
-
-
   <script src="./js/jquery.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     let mainNav = document.getElementById('main-nav');
     let btnNavClose = document.getElementById('btn-nav-close');
     let body = document.querySelector('body');
-
     btnNavClose.onclick = function(){
       mainNav.classList.toggle('active');
       let str = mainNav.getAttribute('class');
@@ -1193,7 +1182,6 @@
         body.style.overflow='auto';
       };
     }
-
     window.onresize = function(){
       if(window.innerWidth >=768){
         body.style.overflow='auto';
@@ -1207,16 +1195,13 @@
     //     secondNav[idx].classList.toggle('active');
     //   }
     // }
-
     $('.second-nav-item').click(function(){
       $(this).children('.sub-nav').toggleClass('active')
     })
-    
     const swiper = new Swiper('.main-banner-swiper', {
       loop: true,
       autoplay:true,
     });
-   
     var snsswiper = new Swiper(".sns-swiper", {
       slidesPerView:5,
       spaceBetween:1,
