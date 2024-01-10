@@ -291,7 +291,7 @@ h2 span:nth-child(9) { animation-delay: .8s; }
   grid-template-columns:repeat(3,auto);
   justify-content:center;
   align-content:center;
-  gap:90px 50px;
+  gap:100px 40px;
 }
 #skills .item-box .img-box li{
   display:grid;
