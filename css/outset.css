@@ -260,7 +260,7 @@ h2 span:nth-child(9) { animation-delay: .8s; }
 }
 #skills{
   position:relative;
-  background-image:url('./images/img-main-banner02.jpg');
+  background-image:url('../images/img-main-banner02.jpg');
   background-repeat:no-repeat;
   background-position:center;
   background-attachment:fixed;
