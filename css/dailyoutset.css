@@ -757,7 +757,7 @@ h2{
     height:210px;
   }
   .event-txt01{
-    left:20%;
+    left:12%;
     top:60px;
   }
   .event-item li{
@@ -768,6 +768,9 @@ h2{
   }
   .event-txt01, .event-txt02{
     font-size:20px;
+  }
+  .event-txt02{
+    right:12%;
   }
   .event-img-box img{
     height:300px;
