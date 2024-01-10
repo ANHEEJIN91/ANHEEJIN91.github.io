@@ -290,9 +290,8 @@ h2 span:nth-child(9) { animation-delay: .8s; }
   grid-template-columns:repeat(3,auto);
   justify-content:center;
   align-content:center;
-  column-gap:50px;
+  column-gap:30px;
   row-gap:60px;
-  /* margin-right:50px; */
 }
 #skills .item-box .img-box li{
   display:grid;
@@ -303,7 +302,7 @@ h2 span:nth-child(9) { animation-delay: .8s; }
   font-weight:700;
   color:#f9f9f9;
   text-transform:uppercase;
-  text-shadow:4px 4px #444;
+  text-shadow:3px 2px #444;
 }
 #skills .item-box .img-box li p{
   font-size:20px;
