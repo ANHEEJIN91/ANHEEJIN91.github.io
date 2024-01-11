@@ -88,12 +88,12 @@ h2{
   width:100px;
   height:2px;
   border-top:2px solid #9f9f9f;
-  margin-bottom:10px;
+  margin-bottom:50px;
 }
 .header .sub-nav{     
   padding:10px 0 10px;
   text-transform:capitalize;
-  display:block;
+  display:none;
   font-family:'Rubik Doodle Shadow';
   font-weight:700;
   color:#fff;

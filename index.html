@@ -32,25 +32,21 @@
             <li>
               <a href="./index.html">
                 <span>home</span>
-                <span>Home description</span>
               </a>
             </li>
             <li>
               <a href="#about">
                 <span>about</span>
-                <span>About description</span>
               </a>
             </li>
             <li>
               <a href="#skills">
                 <span>skills</span>
-                <span>skills description</span>
               </a>
             </li>
             <li>
               <a href="#portfolio">
                 <span>portfolio</span>
-                <span>portfolio description</span>
               </a>
             </li>
           </ul>
@@ -256,6 +252,18 @@
         display:'none',
       })      
     })
+   $(window).resize(function(){
+    let winWidth = $(this).width();
+    if(winWidth>=1280){
+      $('nav').css({
+        display:'block',
+      });
+    }else{
+      $('nav').css({
+        display:'none',
+      });
+    }
+   })
     const text1 = "WELCOME TO MY PORTFOLIO";
     const text2 = "  Hi, my name is Hee jin";
     const text = document.querySelector(".text");
